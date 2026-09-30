@@ -30,8 +30,9 @@
   document.querySelector('#new-test').addEventListener('click', () => {
     if (!ready || !window.$chatwoot) return;
     window.$chatwoot.reset();
-    openChat();
-    notify('Новый тест начат. Предыдущая переписка сохранена в операторской панели.');
+    // Reset reloads the iframe without another ready event. Reinitialize the SDK
+    // to keep its open state and the widget's websocket session in sync.
+    window.location.reload();
   });
   document.querySelectorAll('[data-open-chat]').forEach(button => button.addEventListener('click', openChat));
   document.querySelectorAll('[data-prompt]').forEach(button => {
