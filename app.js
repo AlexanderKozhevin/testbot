@@ -4,7 +4,7 @@
   const status = document.querySelector('#connection-status');
   const dot = document.querySelector('#status-dot');
   const retry = document.querySelector('#retry');
-  const controls = document.querySelectorAll('[data-open-chat], [data-prompt]');
+  const controls = document.querySelectorAll('[data-open-chat], [data-prompt], #new-test');
   const toast = document.querySelector('#toast');
   const dialog = document.querySelector('#copy-dialog');
   let ready = false;
@@ -27,6 +27,12 @@
     retry.hidden = false;
   }
   retry.addEventListener('click', () => window.location.reload());
+  document.querySelector('#new-test').addEventListener('click', () => {
+    if (!ready || !window.$chatwoot) return;
+    window.$chatwoot.reset();
+    openChat();
+    notify('Новый тест начат. Предыдущая переписка сохранена в операторской панели.');
+  });
   document.querySelectorAll('[data-open-chat]').forEach(button => button.addEventListener('click', openChat));
   document.querySelectorAll('[data-prompt]').forEach(button => {
     button.addEventListener('click', async () => {
