@@ -2,6 +2,8 @@
 
 Статическая демостраница поддержки EdgeCenter для GitHub Pages.
 
+**Демо:** https://alexanderkozhevin.github.io/testbot/
+
 ## Запуск
 
 ```sh
